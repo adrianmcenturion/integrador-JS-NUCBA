@@ -5,3 +5,7 @@
 .btn-login:hover {
     background-color: purple;
 }
+
+.navbar-brand {
+    font-family: 'Permanent Marker', cursive;
+}
