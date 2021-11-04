@@ -6,6 +6,12 @@
     box-shadow: 0px 13px 20px -2px rgba(0,0,0,0.24);
     -webkit-box-shadow: 0px 13px 20px -2px rgba(0,0,0,0.24);
     -moz-box-shadow: 0px 13px 20px -2px rgba(0,0,0,0.24);
+    transition: 1s;
+}
+
+.containerCard:hover {
+    transform: scale(1.16);
+    z-index: 10000;
 }
 
 .tipo-grass, .tipo-darkness, .tipo-dragon, .tipo-fairy, .tipo-fighting, .tipo-fire, .tipo-lightning, .tipo-metal, .tipo-psychic, .tipo-water, .tipo-colorless {
