@@ -65,6 +65,15 @@ background-color: #7639b8;
 background-color: #32b5f1;
 }
 
+.divSetCarta, .rarezaNumero {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0.5em;
+
+}
+
+
+
 
 
 

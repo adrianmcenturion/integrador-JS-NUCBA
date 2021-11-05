@@ -50,16 +50,50 @@ const responseCartas = (cartas) => {
          cardTitle.className = ('card-title')
          cardTitle.innerText = carta.name;
 
+         const divSetCarta = document.createElement('div')
+         divSetCarta.className = ('divSetCarta')
+
+         const series = document.createElement('p')
+         series.innerText = carta.set.series;
+
+         const seriesSetName = document.createElement('p')
+         seriesSetName.innerText = carta.set.name;
+
+         const rarezaNumero = document.createElement('div')
+         rarezaNumero.className = ('rarezaNumero')
+
          const rareza = document.createElement('p')
          rareza.className = ('card-text')
-         rareza.innerText = "Rareza: " + carta.rarity;
+         rareza.innerText = carta.rarity;
 
-         const tipo = document.createElement('p')
-         console.log(tipo.innerText)
-         tipo.className = ('card-text')
-         tipo.innerText = carta.types;
+         const span1 = document.createElement('span')
+         span1.innerText = ('-')
 
-         console.log(tipo.innerText)
+         const numeroCarta = document.createElement('p')
+         numeroCarta.className = ('card-text')
+         numeroCarta.innerText = "#"+carta.number
+
+         const divTipos = document.createElement('div')
+         divTipos.className = ('divTipos')
+
+         const tipo0 = document.createElement('p')
+         tipo0.className = ('card-text')
+         tipo0.innerText = carta.types[0];
+
+         if (carta.types > 0) {
+            const tipo1 = document.createElement('p')
+            tipo1.className = ('card-text')
+            tipo1.innerText = carta.types[1];
+
+            tipo1.classList.add(`tipo-${type}`)
+
+            divTipos.appendChild(tipo1)
+         }
+         
+         
+             
+        
+
 
          const btnComprar = document.createElement('a')
          btnComprar.className = ('btn')
@@ -72,11 +106,17 @@ const responseCartas = (cartas) => {
 
          
 
-
-
+         divTipos.appendChild(tipo0)
+         
+         divSetCarta.appendChild(series)
+         divSetCarta.appendChild(seriesSetName)
+         rarezaNumero.appendChild(rareza)
+         rarezaNumero.appendChild(span1)
+         rarezaNumero.appendChild(numeroCarta)
          cardBody.appendChild(cardTitle)
-         cardBody.appendChild(rareza)
-         cardBody.appendChild(tipo)
+         cardBody.appendChild(divSetCarta)
+         cardBody.appendChild(rarezaNumero)
+         cardBody.appendChild(divTipos)
          cardBody.appendChild(precio)
          cardBody.appendChild(btnComprar)
          containerCard.appendChild(img)
@@ -90,42 +130,83 @@ const responseCartas = (cartas) => {
          precio.classList.add('precio-carta')
 
          
-        function checkTipo () {
-            if(tipo.innerText == "Grass") {
-                tipo.classList.add('tipo-grass')
+
+        function checkTipo() {
+            
+        
+        tipoCarta = carta.types
+
+        tipoCartaLowerCase = tipoCarta.map(types => types.toLowerCase());
+        
+        console.log(tipoCartaLowerCase)
+
+
+
+        tipoCartaLowerCase.forEach(agregarClasesTipo);
+
+
+
+        function agregarClasesTipo( type) {
+            if (tipoCartaLowerCase.length > 0) {
+                tipo0.classList.add(`tipo-${type}`)
                 
-            }if (tipo.innerText == "Water") {
-                tipo.classList.add('tipo-water')
-                
-            }if (tipo.innerText == "Psychic") {
-                tipo.classList.add('tipo-psychic')
-                
-            }if (tipo.innerText == "Metal") {
-                tipo.classList.add('tipo-metal')
-                
-            }if (tipo.innerText == "Lightning") {
-                tipo.classList.add('tipo-lightning')
-                
-            }if (tipo.innerText == "Fire") {
-                tipo.classList.add('tipo-fire')
-                
-            }if (tipo.innerText == "Fighting") {
-                tipo.classList.add('tipo-fighting')
-                
-            }if (tipo.innerText == "Fairy") {
-                tipo.classList.add('tipo-fairy')
-                
-            }if (tipo.innerText == "Dragon") {
-                tipo.classList.add('tipo-dragon')
-                
-            }if (tipo.innerText == "Darkness") {
-                tipo.classList.add('tipo-darkness')
-                
-            }if (tipo.innerText == "Colorless") {
-                tipo.classList.add('tipo-colorless')
-                
+            } else {
+                tipo0.classList.add(`tipo-${type}`)
             }
+            
+            
         }
+
+        
+        }
+
+        
+
+
+
+
+
+
+        // tipo.classList.add('"tipo-"${tipoCartas}')
+
+        // function checkTipo () {
+
+            
+        //     if(tipo.innerText == "Grass") {
+        //         tipo.classList.add('tipo-grass')
+                
+        //     }if (tipo.innerText == "Water") {
+        //         tipo.classList.add('tipo-water')
+                
+        //     }if (tipo.innerText == "Psychic") {
+        //         tipo.classList.add('tipo-psychic')
+                
+        //     }if (tipo.innerText == "Metal") {
+        //         tipo.classList.add('tipo-metal')
+                
+        //     }if (tipo.innerText == "Lightning") {
+        //         tipo.classList.add('tipo-lightning')
+                
+        //     }if (tipo.innerText == "Fire") {
+        //         tipo.classList.add('tipo-fire')
+                
+        //     }if (tipo.innerText == "Fighting") {
+        //         tipo.classList.add('tipo-fighting')
+                
+        //     }if (tipo.innerText == "Fairy") {
+        //         tipo.classList.add('tipo-fairy')
+                
+        //     }if (tipo.innerText == "Dragon") {
+        //         tipo.classList.add('tipo-dragon')
+                
+        //     }if (tipo.innerText == "Darkness") {
+        //         tipo.classList.add('tipo-darkness')
+                
+        //     }if (tipo.innerText == "Colorless") {
+        //         tipo.classList.add('tipo-colorless')
+                
+        //     }
+        // }
 
         setTimeout(checkTipo, 1000);
         
