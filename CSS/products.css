@@ -14,54 +14,57 @@
     z-index: 10000;
 }
 
-.tipo-grass, .tipo-darkness, .tipo-dragon, .tipo-fairy, .tipo-fighting, .tipo-fire, .tipo-lightning, .tipo-metal, .tipo-psychic, .tipo-water, .tipo-colorless {
-    padding: 5px 10px;
+.tipoGrass, .tipoDarkness, .tipoDragon, .tipoFairy, .tipoFighting, .tipoFire, .tipoLightning, .tipoMetal, .tipoPsychic, .tipoWater, .tipoColorless {
+    padding: 3px 7px;
     color: cornsilk;
-    width: fit-content;
-    border-radius: 10px;
+    width: 6em;
+    height: fit-content;
+    border-radius: 5px;
+    text-align: center;
 }
 
-.tipo-grass {
+.tipoGrass {
     background-color: #21ae3b;
 }
 
-.tipo-darkness {
+.tipoDarkness {
     background-color:#054782;
 }
 
-.tipo-dragon {
+.tipoDragon {
     background-color: #cdc352;
 }
 
-.tipo-colorless {
+.tipoColorless {
     background-color: #f4f4e4;
+    color: black;
 }
 
-.tipo-fairy {
+.tipoFairy {
 background-color: #e65495;
 }
 
-.tipo-fighting {
+.tipoFighting {
 background-color: #be2102;
 }
 
-.tipo-fire {
+.tipoFire {
 background-color: #e95000;
 }
 
-.tipo-lightning {
+.tipoLightning {
 background-color: #f1cd15;
 }
 
-.tipo-metal {
+.tipoMetal {
 background-color: #bebfb8;
 }
 
-.tipo-psychic {
+.tipoPsychic {
 background-color: #7639b8;
 }
 
-.tipo-water {
+.tipoWater {
 background-color: #32b5f1;
 }
 
@@ -72,7 +75,11 @@ background-color: #32b5f1;
 
 }
 
-
+.divTipos {
+    display: flex;
+    gap: .5em;
+    margin-bottom: .5em;
+}
 
 
 
