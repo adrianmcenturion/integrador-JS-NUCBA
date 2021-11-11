@@ -3,8 +3,13 @@
 }
 
 body {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
+
+
 
 main {
     max-width: 800px;
@@ -13,6 +18,7 @@ main {
     padding: 40px;
     background: yellowgreen;
 }
+
 
 .formulario {
     display: grid;
