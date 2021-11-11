@@ -7,14 +7,22 @@
     <title>Integrador JS</title>
     <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.css">
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/login.css">
+    <link rel="stylesheet" href="./CSS/register.css">
 </head>
 <body>
 
     <main>
         <form action="" class="formulario" id="formulario">
-            <h1 class="iniciar-sesion">Iniciar Sesión</h1>
-            
+            <h1 class="registrarse">REGISTRARSE</h1>
+            <div class="formulario-grupo" id="grupo-nombre">
+                <label for="nombre" class="formulario-label">Nombre</label>
+                <div class="formulario-grupo-input">
+                    <input type="text" class="formulario-input" name="nombre" id="nombre" placeholder="Nombre...">
+                    <i id="i-nombre" class="formulario-validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p id="formulario-input-error-nombre" class="formulario-input-error">El nombre debe contener entre 4 y 16 digitos. Y solo puede contener letras, numeros y guion bajo.</p>
+
+            </div>
             <div class="formulario-grupo" id="grupo-email">
                 <label for="email" class="formulario-label">Email</label>
                 <div class="formulario-grupo-input">
@@ -33,16 +41,20 @@
                 <p id="formulario-input-error-password" class="formulario-input-error">La Contraseña debe tener entre 4 y 12 caracteres.</p>
 
             </div>
-            
+            <div class="formulario-grupo" id="grupo-password2">
+                <label for="password2" class="formulario-label">Repetir Contraseña</label>
+                <div class="formulario-grupo-input">
+                    <input type="password" class="formulario-input" name="password2" id="password2">
+                    <i id="i-password2" class="formulario-validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p id="formulario-input-error-password2" class="formulario-input-error">Ambas contraseñas deben ser iguales.</p>
+            </div>
             <div class="formulario-mensaje" id="formulario-mensaje">
                 <p><i class="fas fa-exclamation-triangle"></i> Por favor rellene el formulario correctamente.</p>
             </div>
             <div class="formulario-grupo formulario-grupo-btn-enviar">
-                <button type="submit" class="formulario-btn">Enviar</button>
+                <button id="btn-submit" type="submit" class="formulario-btn">Enviar</button>
                 <p class="formulario-mensaje-exito" id="formulario-mensaje-exito">Formulario enviado exitosamente.</p>
-            </div>
-            <div class="registrarse">
-                <p>Si no estás registrado hace click <a href="./register.html"> acá</a></p>
             </div>
         </form>
     </main>
@@ -51,6 +63,6 @@
 
     
     <script src="./fontawesome-free-5.15.4-web/js/all.js"></script>
-    <script src="./JS/login.js"></script>
+    <script src="./JS/register.js"></script>
 </body>
 </html>

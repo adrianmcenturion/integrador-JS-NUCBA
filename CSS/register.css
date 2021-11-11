@@ -42,7 +42,7 @@ label {
     gap: 20px;
 }
 
-.iniciar-sesion {
+.registrarse {
     text-align: center;
     color: var(--gris);
 }
@@ -98,7 +98,7 @@ label {
     opacity: 0;
 }
 
-.formulario-mensaje, .formulario-grupo-btn-enviar, .iniciar-sesion, .registrarse {
+.formulario-mensaje, .formulario-grupo-btn-enviar, .registrarse {
     grid-column: span 2;
 }
 
@@ -181,23 +181,12 @@ label {
 }
 
 
-.registrarse {
-    text-align: center;
-    color: var(--gris);
-}
-
-.registrarse a {
-    
-    color: var(--orangeRed);
-}
-
-
 @media screen and (max-width: 800px) {
     .formulario {
         grid-template-columns: 1fr;
     }
 
-    .formulario-mensaje, .formulario-grupo-btn-enviar, .iniciar-sesion, .registrarse {
+    .formulario-mensaje, .formulario-grupo-btn-enviar, .registrarse {
         grid-column: 1;
     }
 
