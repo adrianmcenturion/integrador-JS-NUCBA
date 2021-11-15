@@ -9,7 +9,7 @@ const baseURL = 'https://back-sandbox.herokuapp.com/api'
 
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
+	password: /^.{6,12}$/, // 6 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	
 }
@@ -106,28 +106,6 @@ formulario.addEventListener('submit', (e) => {
     if(campos.nombre && campos.email && campos.password) {
         formulario.reset()
 
-        // const postRequest = async () => {
-        //     try {
-        //         const response = await fetch(`${baseURL}/auth/register`, {
-        //             method: 'POST',
-        //             'Content-Type': 'application/json',
-        //             body: {
-        //                 "email": email.value,
-        //                 "password": password.value,
-        //                 "name": nombre.value,
-                        
-        //             }
-                    
-        //         });
-
-
-                
-        //     } catch( error ) {
-        
-        //     }
-        // }
-
-        
 
         document.getElementById('formulario-mensaje-exito').classList.add('formulario-mensaje-exito-activo')
         setTimeout(() => {
@@ -163,6 +141,17 @@ const postRequest = async () => {
 
         const json = await response.json();
         console.log(json);
+        console.log(response.status)
+
+        const redirigir = () => {
+            if (response.status == 201) {
+                
+                window.location = './login.html';
+                
+            }
+        }
+
+        setTimeout(redirigir, 3000)
 
     } catch( error ) {
 
@@ -172,30 +161,3 @@ const postRequest = async () => {
 
     btnSubmit.addEventListener('click', postRequest)
 
-
-
-// const register = async () => {
-//     const payload = {
-//         email: email.value,
-//         password: password.value,
-//         name: nombre.value,
-        
-//     };
-
-//     try{
-//         const response = await fetch(baseURL + '/auth/register', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(payload)
-//         });
-
-//         const json = await response.json();
-//         console.log(json);
-//     } catch( error ) {
-//         alert('che error', error);
-//     }
-// }
-
-// btnSubmit.addEventListener('click', register);

@@ -1,10 +1,18 @@
 const formulario = document.getElementById('formulario');
 const inputs = document.querySelectorAll('#formulario input')
 
+const baseURL = 'https://back-sandbox.herokuapp.com/api';
+const btnSubmit = document.getElementById('btn-submit')
+const password = document.getElementById('password')
+const email = document.getElementById('email')
+
+const token = null
+
+
 
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	password: /^.{4,12}$/, // 4 a 12 digitos.
+	password: /^.{6,12}$/, // 6 a 12 digitos.
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
 	
 }
@@ -86,3 +94,50 @@ formulario.addEventListener('submit', (e) => {
         document.getElementById('formulario-mensaje').classList.add('formulario-mensaje-activo')
     }
 })
+
+const login = async () => {
+
+    const body = {
+        email: email.value,
+        password: password.value
+    };
+
+    try {
+        const response = await fetch(`${baseURL}/auth/login`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(body)
+        });
+
+        const json = await response.json();
+
+        const token = json.token
+
+        console.log(token)
+        
+        console.log(json);
+        
+        const redirigir = () => {
+            if (response.status == 200) {
+                
+                localStorage.setItem('token', token)
+                window.location = './products.html';
+                
+            }
+        }
+
+        setTimeout(redirigir, 3000)
+
+
+
+    } catch( error ) {
+        alert('ERROR', error);
+    }
+}
+
+
+    btnSubmit.addEventListener('click', login)
+
+    

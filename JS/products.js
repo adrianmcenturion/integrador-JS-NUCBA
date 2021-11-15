@@ -8,6 +8,19 @@ const inputBuscar = document.getElementById('inputBuscar')
 
 // btnBuscar.addEventListener('click', searchMangas)
 
+const token = localStorage.getItem('token')
+
+
+
+console.log(token)
+
+if (token == null) {
+    alert('Logueate para poder comprar')
+
+    window.location = ('./login.html')
+    
+} else {
+
 
 
 const getCartas = async () => {
@@ -31,6 +44,8 @@ const getCartas = async () => {
     }
     
 };
+
+
 
 const responseCartas = (cartas) => {
     cartas.forEach(carta => {
@@ -150,3 +165,4 @@ const responseCartas = (cartas) => {
 
 getCartas()
 
+}
