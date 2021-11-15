@@ -14,3 +14,15 @@ body {
     font-family: 'Permanent Marker', cursive;
 }
 
+
+.cerrarSesion {
+    display: none;
+}
+
+.cerrarSesion-activo {
+    display: block;
+}
+
+.iniciarSesion {
+    display: none;
+}

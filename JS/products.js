@@ -5,12 +5,16 @@ const searchMangaURL = 'https://kitsu.io/api/edge/manga'
 const containerMangas = document.getElementById('container-mangas')
 const btnBuscar = document.getElementById('btnBuscar')
 const inputBuscar = document.getElementById('inputBuscar')
+const iniciarSesion = document.getElementById('iniciarSesion')
+const cerrarSesion = document.getElementById('cerrarSesion')
 
 // btnBuscar.addEventListener('click', searchMangas)
 
 const token = localStorage.getItem('token')
 
 
+
+const cantidadAComprar = []
 
 console.log(token)
 
@@ -20,6 +24,12 @@ if (token == null) {
     window.location = ('./login.html')
     
 } else {
+
+    iniciarSesion.classList.add('iniciarSesion')
+    cerrarSesion.classList.add('cerrarSesion-activo')
+    cerrarSesion.classList.remove('cerrarSesion')
+
+
 
 
 
@@ -111,37 +121,55 @@ const responseCartas = (cartas) => {
          }
 
 
-         const divPrecioComprar = document.createElement('div')
-         divPrecioComprar.className = ('d-flex')
-         
-        
-             
+         const divPrecio = document.createElement('div')
 
-         const btnComprar = document.createElement('a')
-         btnComprar.className = ('btn')
+         divPrecio.className = ('d-flex')
          
-         btnComprar.innerText = "Comprar"
          
          const precio = document.createElement('h5')
          precio.className = ('card-title')
-         precio.innerText = "Precio: $"+carta.cardmarket.prices.avg1;
+         precio.innerText = "$"+carta.cardmarket.prices.avg1;
+
+         const divMiniPrecio = document.createElement('div')
+         divMiniPrecio.className = ('d-flex')
+
+         const restar = document.createElement('h5')
+         restar.className = ('restar')
+         restar.innerText = "-"
+
+         const cantidad = document.createElement('input')
+         cantidad.type = "number"
+         cantidad.value = 1
+         
+
+         const sumar = document.createElement('h5')
+         sumar.className = ('sumar')
+         sumar.innerText = "+"
+
+         const btnComprar = document.createElement('a')
+         btnComprar.className = ('btn') 
+         btnComprar.innerText = "Comprar"
+         
 
          
 
          
-         
+         divMiniPrecio.appendChild(restar)
+         divMiniPrecio.appendChild(cantidad)
+         divMiniPrecio.appendChild(sumar)
          divSetCarta.appendChild(series)
          divSetCarta.appendChild(seriesSetName)
          rarezaNumero.appendChild(rareza)
          rarezaNumero.appendChild(span1)
          rarezaNumero.appendChild(numeroCarta)
-         divPrecioComprar.appendChild(precio)
-         divPrecioComprar.appendChild(btnComprar)
+         divPrecio.appendChild(precio)
+         divPrecio.appendChild(divMiniPrecio)
          cardBody.appendChild(cardTitle)
          cardBody.appendChild(divTipos)
          cardBody.appendChild(divSetCarta)
          cardBody.appendChild(rarezaNumero)
-         cardBody.appendChild(divPrecioComprar)
+         cardBody.appendChild(divPrecio)
+         cardBody.appendChild(btnComprar)
          containerCard.appendChild(img)
          containerCard.appendChild(cardBody)
          containerCards.appendChild(containerCard);
@@ -152,17 +180,74 @@ const responseCartas = (cartas) => {
          btnComprar.classList.add('btn-sm', 'btn-primary')
          precio.classList.add('precio-carta')
          tipo0.classList.add('card-text')
-         divPrecioComprar.classList.add('justify-content-between')
+         divPrecio.classList.add('justify-content-between', 'divPrecio')
+         divMiniPrecio.classList.add('justify-content-around', 'divMiniComprar')
+         restar.classList.add('card-text')
+         sumar.classList.add('card-text')
+         btnComprar.classList.add('btnComprar')
 
         
+
+         sumar.addEventListener('click', botonSumar)
+        restar.addEventListener('click', botonRestar)
+
+        
+
+        function botonRestar () {
+
+            if( restar.clicked = true && cantidad.value > 1) {
+                cantidad.value--
+                console.log(cantidad.value)
+            } 
+            
+            
+            
+        }
+        function botonSumar () {
+            
+            if(sumar.clicked = true) {
+                cantidad.value++
+                console.log(cantidad.value)
+            }
+            
+        
+        }
         
          
      });
 
      
+     
+
+     const comprar = () => {
+     
+
+    }
+   
+   
+    btnComprar.addEventListener('click', comprar)
+
+    
+
+
+
  }
+
+ 
+
+ 
 
 
 getCartas()
 
 }
+
+cerrarSesion.addEventListener('click', () => {
+    localStorage.removeItem('token')
+    window.location = ('./index.html')
+})
+
+
+
+
+

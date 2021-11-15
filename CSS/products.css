@@ -18,6 +18,13 @@ body {
     z-index: 10000;
 }
 
+.card-body {
+    min-height: 285px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .tipoGrass, .tipoDarkness, .tipoDragon, .tipoFairy, .tipoFighting, .tipoFire, .tipoLightning, .tipoMetal, .tipoPsychic, .tipoWater, .tipoColorless {
     padding: 3px 7px;
     color: cornsilk;
@@ -85,6 +92,90 @@ background-color: #32b5f1;
     margin-bottom: .5em;
 }
 
+.divPrecio {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.divMiniPrecio {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    gap: .5em;
+}
+
+.divMiniComprar h5, input {
+    margin: 0%;
+}
+
+.divMiniComprar h5 {
+    text-align: center;
+    margin: .1em;
+    font-size: 1.5em;
+    width: 1.5em;
+}
+
+.divMiniComprar input {
+    width: 2em;
+    text-align: center;
+    border-radius: 5px;
+    border-style: none;
+    font-weight: 500;
+}
+
+.restar, .sumar {
+    color: #0d6efd;
+    
+}
+
+.restar, .sumar:hover {
+    cursor: pointer;
+}
+
+.btnComprar {
+    width: 100%;
+    
+}
+
+.cerrarSesion {
+    display: none;
+}
+
+.cerrarSesion-activo {
+    display: block;
+}
+
+.iniciarSesion {
+    display: none;
+}
+
+footer {
+    background-color: #212529;
+    width: 100%;
+    height: 6em;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1.5em 0;
+    
+}
+
+.redes, .info {
+    color: #6c8a9e;
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
 
 
 
@@ -106,21 +197,3 @@ background-color: #32b5f1;
 
 
 
-
-
-
-
-
-
-
-Colorless",
-    "Darkness",
-    "Dragon",
-    "Fairy",
-    "Fighting",
-    "Fire",
-    "Grass",
-    "Lightning",
-    "Metal",
-    "Psychic",
-    "Water"

@@ -128,7 +128,7 @@ const login = async () => {
             }
         }
 
-        setTimeout(redirigir, 3000)
+        setTimeout(redirigir, 1500)
 
 
 
