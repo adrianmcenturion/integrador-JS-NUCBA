@@ -7,6 +7,7 @@ const btnBuscar = document.getElementById('btnBuscar')
 const inputBuscar = document.getElementById('inputBuscar')
 const iniciarSesion = document.getElementById('iniciarSesion')
 const cerrarSesion = document.getElementById('cerrarSesion')
+const containerCarrito = document.getElementById('containerCarrito')
 
 // btnBuscar.addEventListener('click', searchMangas)
 
@@ -15,6 +16,7 @@ const token = localStorage.getItem('token')
 
 
 const cantidadAComprar = []
+const carrito = []
 
 console.log(token)
 
@@ -213,19 +215,65 @@ const responseCartas = (cartas) => {
         
         }
         
+        const comprar = () => {
+
+            const divCarrito = document.createElement('div')
+            divCarrito.className = ('divCarrito')
+
+            const imgCarrito = document.createElement('img')
+            imgCarrito.className = ('imgCarrito')
+            imgCarrito.src = img.src
+
+            const cardTitleCarrito = document.createElement('h5')
+            cardTitleCarrito.innerText = cardTitle.innerText
+
+            const divSetCartaCarrito = document.createElement('div')
+            divSetCartaCarrito.className = ('divSetCartaCarrito')
+
+            const seriesCarrito = document.createElement('p')
+            seriesCarrito.innerText = series.innerText;
+
+            const seriesSetNameCarrito = document.createElement('p')
+            seriesSetNameCarrito.innerText = seriesSetName.innerText;
+
+            const divCantidadPrecio = document.createElement('div')
+            divCantidadPrecio.className = ('divCantidadPrecio')
+
+            const cantidadCarrito = document.createElement('h5')
+            cantidadCarrito.innerText = `x${cantidad.value}`
+
+            const sumaCantidadPrecio = document.createElement('h5')
+            sumaCantidadPrecio.innerText = `$${cantidad.value * carta.cardmarket.prices.avg1}`
+
+            console.log(precio.value)
+            console.log(precio.innerText)
+
+            
+
+            divSetCartaCarrito.appendChild(seriesCarrito)
+            divSetCartaCarrito.appendChild(seriesSetNameCarrito)
+            divCantidadPrecio.appendChild(cantidadCarrito)
+            divCantidadPrecio.appendChild(sumaCantidadPrecio)
+            divCarrito.appendChild(imgCarrito)
+            divCarrito.appendChild(cardTitleCarrito)
+            divCarrito.appendChild(divSetCartaCarrito)
+            divCarrito.appendChild(divCantidadPrecio)
+            containerCarrito.appendChild(divCarrito)
+            
+
+
+        
+   
+       }
+      
+      
+       btnComprar.addEventListener('click', comprar)
          
      });
 
      
      
 
-     const comprar = () => {
-     
-
-    }
-   
-   
-    btnComprar.addEventListener('click', comprar)
 
     
 
