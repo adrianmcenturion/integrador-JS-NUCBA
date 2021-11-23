@@ -154,8 +154,8 @@ const renderCartas = (cartas) => {
             containerCards.appendChild(containerCard);
             containerCartas.appendChild(containerCards)
             
-            containerCards.classList.add('col-12', 'col-sm-6', 'col-lg-3', 'mb-4')
-            containerCard.classList.add('card')
+            containerCards.classList.add('col-12', 'col-sm-6', 'col-lg-3', 'col-xs', 'mb-4')
+            containerCard.classList.add('card', 'col')
             btnComprar.classList.add('btn-sm', 'btn-primary')
             precio.classList.add('precio-carta')
             tipo0.classList.add('card-text')

@@ -14,7 +14,7 @@ body {
 }
 
 .containerCard:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     z-index: 10000;
 }
 
@@ -241,6 +241,19 @@ footer a {
         z-index: 10000;
     }
     
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+
+    .col-sm-6 {
+    flex: 0 0 auto;
+    width: 50%;
+    }
+
+    .divSetCarta {
+        flex-wrap: wrap;
+    }
+
 }
 
 
