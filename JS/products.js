@@ -123,6 +123,10 @@ const renderCartas = (cartas) => {
             const btnComprar = document.createElement('a')
             btnComprar.className = ('btn') 
             btnComprar.innerText = "Añadir al carrito"
+
+            const mensajeAgregadoCarrito = document.createElement('p')
+            mensajeAgregadoCarrito.className = ('mensajeAgregadoCarrito')
+            mensajeAgregadoCarrito.innerText = 'Agregado al carrito!'
             
             const idCarta = document.createElement('p')
             idCarta.className = ('idCarta')
@@ -147,6 +151,7 @@ const renderCartas = (cartas) => {
             cardBody.appendChild(divSetCarta)
             cardBody.appendChild(rarezaNumero)
             cardBody.appendChild(divPrecio)
+            cardBody.appendChild(mensajeAgregadoCarrito)
             cardBody.appendChild(btnComprar)
             cardBody.appendChild(idCarta)
             containerCard.appendChild(img)
@@ -277,6 +282,15 @@ const renderCartas = (cartas) => {
         console.log(itemPrecio)
         const itemImg = item.querySelector('img').src
         const itemId = item.querySelector('.idCarta').textContent
+
+        const mensajeCarrito = item.querySelector('.mensajeAgregadoCarrito')
+
+        mensajeCarrito.classList.add('mensajeAgregadoCarrito-activo')
+
+        function borrarClaseMensaje () {
+            mensajeCarrito.classList.remove('mensajeAgregadoCarrito-activo')
+        }
+        setTimeout(borrarClaseMensaje, 1200)
         
         const newItem = {
             img: itemImg,
@@ -287,6 +301,8 @@ const renderCartas = (cartas) => {
         }
 
         agregarItemAlCarrito(newItem)
+
+        
 
     }
 

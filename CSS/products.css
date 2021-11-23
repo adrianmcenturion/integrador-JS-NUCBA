@@ -205,6 +205,38 @@ background-color: #32b5f1;
     filter: brightness(1.5);
 }
 
+.mensajeAgregadoCarrito {
+    color: green;
+    text-align: center;
+    display: none;
+    transition: 1s;
+}
+
+.mensajeAgregadoCarrito-activo {
+    transition: 1s ease all;
+    animation: mensajeAlCarrito 2s ease-in-out;
+    display: block;
+    
+}
+
+@keyframes mensajeAlCarrito {
+
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 100%;
+    }
+
+    100% {
+        opacity: 0%;
+    }
+    
+}
+
+
+
 
 footer {
     background-color: #212529;
