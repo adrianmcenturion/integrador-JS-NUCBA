@@ -26,3 +26,9 @@ body {
 .iniciarSesion {
     display: none;
 }
+
+.iniciaSesionH3-activo, .iniciaSesionIndexBTN-activo {
+    display: none;
+
+
+}

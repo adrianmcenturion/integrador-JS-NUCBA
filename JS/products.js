@@ -2,6 +2,7 @@
 const baseURL = 'https://api.pokemontcg.io/v2/cards?pageSize=20&q=nationalPokedexNumbers:[1 TO 20]'
 
 
+
 const containerCartas = document.getElementById('container-cartas')
 const btnBuscar = document.getElementById('btnBuscar')
 const inputBuscar = document.getElementById('inputBuscar')
@@ -13,12 +14,14 @@ const btnFinalizarCompra = document.getElementById('btn-finalizar-compra')
 
 
 
+
 const token = localStorage.getItem('token')
 
 
 
 const cantidadAComprar = []
 let carrito = []
+let dataCartas = []
 
 console.log(token)
 
@@ -31,6 +34,8 @@ if (token == null) {
     window.location = ('./login.html')
     
 }
+
+
 
 iniciarSesion.classList.add('iniciarSesion')
 cerrarSesion.classList.add('cerrarSesion-activo')
@@ -212,10 +217,18 @@ const renderCartas = (cartas) => {
     
             const json = await response.json();
             const { data } = json;
+
             
-            console.log(data)
+
+            
 
             renderCartas(data)
+
+        
+
+            console.log(data)
+
+            
             
             
             
@@ -226,50 +239,75 @@ const renderCartas = (cartas) => {
         
     }
 
-    // const renderCarrito = (cartas) => {
-    //     cartas.forEach(carta => {
+    
 
-    //         const img = document.createElement('img');
-    //         img.src = document.querySelector('img')
-    //         img.alt = carta.name;
-            
-    //         const cardTitle = document.createElement('h3')
-    //         cardTitle.className = ('card-title')
-    //         cardTitle.innerText = carta.name;
-            
-    //         const divSetCarta = document.createElement('div')
-    //         divSetCarta.className = ('divSetCartaCarrito')
-            
-    //         const series = document.createElement('p')
-    //         series.innerText = carta.set.series;
-            
-    //         const seriesSetName = document.createElement('p')
-    //         seriesSetName.innerText = carta.set.name;
+    getCartas()
 
-    //         const cantidad = document.createElement('input')
-    //         cantidad.type = "number"
-    //         cantidad.value = `x${1}`
-
-    //         const cantidadXPrecio = document.createElement('p')
-    //         cantidadXPrecio.innerText = cantidad.value * carta.cardmarket.prices.avg1
+    function palabraABuscar () {
+        pokemonABuscar = inputBuscar.value
+        console.log(pokemonABuscar)
+    }
 
 
-    //         containerCarrito.appendChild(img)
-    //         containerCarrito.appendChild(cardTitle)
-    //         divSetCarta.appendChild(series)
-    //         divSetCarta.appendChild(seriesSetName)
-    //         containerCarrito.appendChild(divSetCarta)
-    //         containerCarrito.appendChild(cantidad)
-    //         containerCarrito.appendChild(cantidadXPrecio)
+    const buscarCartas = async () => {
+
+        
+        try {
+    
+            const response = await fetch(`https://api.pokemontcg.io/v2/cards?pageSize=20&q=name:${pokemonABuscar}*`, {
+                method: 'GET',
+                headers: {
+                    'X-Api-Key': 'c6acf381-56e2-4fce-98d1-3dd72b80af18'
+                }
+            });
+    
+            const json = await response.json();
+            const dataBusqueda = json.data;
+
 
 
             
-    //     });
-    // }
 
-    // const newItem = {
-    //     img: 
-    // }
+            
+            
+            
+            console.log(dataBusqueda)
+            containerCartas.innerHTML = ''
+            if (dataBusqueda.length === 0) {
+                document.querySelector('.sinResultados').classList.add('sinResultados-activo')
+                
+            }else {
+                document.querySelector('.sinResultados').classList.remove('sinResultados-activo')
+                
+                renderCartas(dataBusqueda)
+            }
+            
+            
+
+
+
+            
+
+            
+            
+            
+            
+            
+        } catch( error ) {
+            alert(error);
+        }
+
+        
+        
+    }
+
+    
+
+
+
+    inputBuscar.addEventListener('change', palabraABuscar)
+    btnBuscar.addEventListener('click', buscarCartas)
+    
 
 
     const agregarAlCarrito = (e) => {
@@ -309,14 +347,22 @@ const renderCartas = (cartas) => {
     const agregarItemAlCarrito = (newItem) => {
 
         const inputElement = containerCarrito.getElementsByClassName('cantidadCarrito')
+        const inputElementPrecio = containerCarrito.getElementsByClassName('precioCarrito')
         console.log(inputElement)
+        console.log(inputElementPrecio)
 
         for (let index = 0; index < carrito.length; index++) {
             if (carrito[index].id === newItem.id) {
                 carrito[index].cantidad++;
                 const inputValue = inputElement[index]
+                const inputValuePrecio = inputElementPrecio[index]
+                
                 
                 inputValue.value++
+
+                inputValuePrecio.innerText = `$${(inputValue.value * newItem.precio).toFixed(2)}`
+                
+
                 
                 
                 console.log(carrito)
@@ -356,6 +402,7 @@ const renderCartas = (cartas) => {
             cantidadCarrito.value = item.cantidad
 
             const cantidadXPrecio = document.createElement('p')
+            cantidadXPrecio.className = ('precioCarrito')
             cantidadXPrecio.innerText = `$${(cantidadCarrito.value * item.precio).toFixed(2)}`
 
             const idCarrito = document.createElement('p')
@@ -729,7 +776,7 @@ const renderCartas = (cartas) => {
 
 
 
-getCartas()
+
 
 
 

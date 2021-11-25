@@ -131,6 +131,14 @@ background-color: #32b5f1;
     
 }
 
+.sinResultados {
+    display: none;
+}
+
+.sinResultados-activo {
+    display: block;
+}
+
 .cerrarSesion {
     display: none;
 }
