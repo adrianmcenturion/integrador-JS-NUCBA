@@ -511,6 +511,7 @@ const renderCartas = (cartas) => {
         renderCarrito()
         carritoTotal()
         localStorage.removeItem('carrito')
+
     }
         
     }
