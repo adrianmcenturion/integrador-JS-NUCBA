@@ -243,7 +243,7 @@ const renderCartas = (cartas) => {
 
     getCartas()
 
-    function palabraABuscar () {
+    function palabraABuscar (e) {
         pokemonABuscar = inputBuscar.value
         console.log(pokemonABuscar)
     }
@@ -254,7 +254,7 @@ const renderCartas = (cartas) => {
         
         try {
     
-            const response = await fetch(`https://api.pokemontcg.io/v2/cards?pageSize=20&q=name:${pokemonABuscar}*`, {
+            const response = await fetch(`https://api.pokemontcg.io/v2/cards?pageSize=100&q=name:${pokemonABuscar}*`, {
                 method: 'GET',
                 headers: {
                     'X-Api-Key': 'c6acf381-56e2-4fce-98d1-3dd72b80af18'
