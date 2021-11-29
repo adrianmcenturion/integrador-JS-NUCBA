@@ -131,8 +131,9 @@ background-color: #32b5f1;
     
 }
 
-input{
-    -webkit-user-select: text;
+.inputPaginacion {
+    width: 3em;
+    text-align: center;
 }
 
 .sinResultados {
@@ -141,6 +142,15 @@ input{
 
 .sinResultados-activo {
     display: block;
+}
+
+.resultados {
+    display: none;
+}
+
+.resultados-activo {
+    display: block;
+    
 }
 
 .cerrarSesion {

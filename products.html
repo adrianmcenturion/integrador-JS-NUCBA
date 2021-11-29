@@ -67,14 +67,7 @@
         </div>
         <div class="row py-5">
             <ul class="nav justify-content-center">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Categorías</a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Trending</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
+                
                 <li class="nav-item">
                     <form class="d-flex">
                         <input id="inputBuscar" class="form-control me-2" type="text" placeholder="Buscar" aria-label="Search">
@@ -82,7 +75,13 @@
                       </form>
                 </li>
               </ul>
+              <div class="nav justify-content-end mt-5">
+                  <button class="btnAnterior btn btn-secondary">Anterior</button>
+                  <input class="inputPaginacion" type="number" value=1>
+                  <button class="btnSiguiente btn-secondary">Siguiente</button>
+              </div>
               <p class="sinResultados mt-5">No se encontraron resultados</p>
+              
         </div>
 
         <div id="container-cartas" class="row container-cartas">
